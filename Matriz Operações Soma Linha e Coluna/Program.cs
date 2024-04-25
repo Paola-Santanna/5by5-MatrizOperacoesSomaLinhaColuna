@@ -8,18 +8,18 @@ int[] resultado_soma_linhas = new int[qnt_linhas];
 int[] resultado_soma_colunas = new int[qnt_colunas];
 
 //Funções
-void GeraçãoMatriz(int[,] matrizGerada)
+void GeraçãoMatriz(int[,] matrizInicial)
 {
     for (int linha = 0; linha < qnt_linhas; linha++)
     {
         for (int coluna = 0; coluna < qnt_colunas; coluna++)
         {
-            matrizGerada[linha, coluna] = new Random().Next(0, 10);
+            matrizInicial[linha, coluna] = new Random().Next(0, 10);
         }
     }
 }
 
-void ImprimirMatriz(int[,] matrizImpressa)
+void ImprimirMatriz(int[,] matrizImpressao)
 {
     Console.WriteLine("Matriz: ");
     for (int linha = 0; linha < qnt_linhas; linha++)
@@ -27,7 +27,7 @@ void ImprimirMatriz(int[,] matrizImpressa)
         Console.WriteLine();
         for (int coluna = 0; coluna < qnt_colunas; coluna++)
         {
-            Console.Write(matrizImpressa[linha, coluna] + " ");
+            Console.Write(matrizImpressao[linha, coluna] + " ");
         }
     }
 }
@@ -50,7 +50,7 @@ void ImprimirSomaDeVetores(int[] vetorResultado, int total_tipoIndice)
 {
     for (int indice = 0; indice < total_tipoIndice; indice++)
     {
-        Console.WriteLine($"{indice + 1}ª linha = {vetorResultado[indice]}");
+        Console.WriteLine($"{indice + 1}ª = {vetorResultado[indice]}");
     }
 }
 
