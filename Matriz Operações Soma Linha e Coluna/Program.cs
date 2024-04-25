@@ -6,7 +6,6 @@ bool encerrar_programa = false;
 int[,] matriz = new int[qnt_linhas, qnt_colunas];
 int[] resultado_soma_linhas = new int[qnt_linhas];
 int[] resultado_soma_colunas = new int[qnt_colunas];
-int[] valores_diagonal_secundaria = new int[qnt_colunas];
 
 //Funções
 void GeraçãoMatriz(int[,] matrizGerada)
