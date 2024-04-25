@@ -91,21 +91,32 @@ Console.WriteLine($"Diagonal Principal = {resultado_soma_diagonal_principal}");
 
 //Diagonal Secundária
 //Operação
-for (int linha = 0; linha < qnt_linhas; linha++)
+//for (int linha = 0; linha < qnt_linhas; linha++)
+//{
+//    do
+//    {
+//        for (int coluna = qnt_colunas; coluna >= 0; coluna--)
+//        {
+//            if (linha != coluna && coluna > linha)
+//            {
+//                valores_diagonal_secundaria[linha] = matriz[linha, coluna];
+//                parar = true;
+//            }
+//        }
+//    } while (parar !=true);
+//    resultado_soma_diagonal_secundaria += soma_diagonal_secundaria;
+//}
+
+//Solução da Ana Bordin
+for (int i = qnt_linhas - 1; i > -1; i--)
 {
-    do
+    for (int j = qnt_colunas - 1; j > -1; j--)
     {
-        for (int coluna = qnt_colunas; coluna >= 0; coluna--)
-        {
-            if (linha != coluna && coluna > linha)
-            {
-                valores_diagonal_secundaria[linha] = matriz[linha, coluna];
-                parar = true;
-            }
-        }
-    } while (parar !=true);
-    resultado_soma_diagonal_secundaria += soma_diagonal_secundaria;
+        if (i + j == qnt_linhas - 1)
+            soma_diagonal_secundaria += matriz[i, j];
+    }
 }
+resultado_soma_diagonal_secundaria = soma_diagonal_secundaria;
 
 
 //Impressão
