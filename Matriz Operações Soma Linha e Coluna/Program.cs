@@ -1,13 +1,15 @@
 ﻿//Uma matriz quadrada, de tamanho variado; mostre os resultados das operações de soma; os resultados devem ser referentes à soma de cada linha, à soma de cada coluna e à soma de cada diagonal;
-int qnt_linhas = 3, qnt_colunas = 3, soma_linha = 0, soma_coluna = 0, soma_diagonal_principal, soma_diagonal_sevundaria;
-int cont_parar = 0;
+int qnt_linhas = 3, qnt_colunas = 3, soma_linha = 0, soma_coluna = 0, soma_diagonal_principal = 0;
+int resultado_soma_diagonal_principal, soma_diagonal_secundaria = 0, resultado_soma_diagonal_secundaria = 0, valor_diagonal;
+bool parar = false;
 
 int[,] matriz = new int[qnt_linhas, qnt_colunas];
 int[] resultado_soma_linhas = new int[qnt_linhas];
 int[] resultado_soma_colunas = new int[qnt_colunas];
-int[] resultado_soma_diagonais = new int[2];
+int[] valores_diagonal_secundaria = new int[qnt_colunas];
 
-//Geração da matriz
+//Matriz
+//Geração
 for (int linha = 0; linha < qnt_linhas; linha++)
 {
     for (int coluna = 0; coluna < qnt_colunas; coluna++)
@@ -16,7 +18,7 @@ for (int linha = 0; linha < qnt_linhas; linha++)
     }
 }
 
-//Impressão da matriz
+//Impressão
 Console.WriteLine("Matriz: ");
 for (int linha = 0; linha < qnt_linhas; linha++)
 {
@@ -28,7 +30,7 @@ for (int linha = 0; linha < qnt_linhas; linha++)
 }
 
 //Linhas
-//Geração da operação
+//Operação
 for (int linha = 0; linha < qnt_linhas; linha++)
 {
 
@@ -48,7 +50,7 @@ for (int indice = 0; indice < qnt_linhas; indice++)
 }
 
 //Colunas
-//Geração das operação
+//Operação
 for (int coluna = 0; coluna < qnt_colunas; coluna++)
 {
 
@@ -60,12 +62,55 @@ for (int coluna = 0; coluna < qnt_colunas; coluna++)
     soma_coluna = 0;
 }
 
-//Impressão das operações com as colunas
+//Impressão
 Console.WriteLine("\n\nSoma das colunas:");
-for (int indice = 0; indice < qnt_colunas; indice++)
+for (int indice = 0; indice < qnt_linhas; indice++)
 {
     Console.WriteLine($"{indice + 1}ª coluna = {resultado_soma_colunas[indice]}");
 }
+
+//Diagonais
+//Diagonal Principal
+//Operação
+for (int linha = 0; linha < qnt_linhas; linha++)
+{
+
+    for (int coluna = 0; coluna < qnt_colunas; coluna++)
+    {
+        if (linha == coluna)
+        {
+            soma_diagonal_principal += matriz[linha, coluna];
+        }
+    }
+}
+resultado_soma_diagonal_principal = soma_diagonal_principal;
+
+//Impressão
+Console.WriteLine("\n\nSoma das diagonais:");
+Console.WriteLine($"Diagonal Principal = {resultado_soma_diagonal_principal}");
+
+//Diagonal Secundária
+//Operação
+for (int linha = 0; linha < qnt_linhas; linha++)
+{
+    do
+    {
+        for (int coluna = qnt_colunas; coluna >= 0; coluna--)
+        {
+            if (linha != coluna && coluna > linha)
+            {
+                valores_diagonal_secundaria[linha] = matriz[linha, coluna];
+                parar = true;
+            }
+        }
+    } while (parar !=true);
+    resultado_soma_diagonal_secundaria += soma_diagonal_secundaria;
+}
+
+
+//Impressão
+Console.WriteLine($"Diagonal Secundária = {resultado_soma_diagonal_secundaria}");
+
 
 Console.WriteLine("\n\nPressione ENTER para encerrar...");
 Console.ReadKey();
