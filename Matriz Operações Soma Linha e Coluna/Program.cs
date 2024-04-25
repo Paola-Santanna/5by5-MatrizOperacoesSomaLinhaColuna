@@ -182,7 +182,6 @@ void Menu()
 
 //Geração da Matriz
 GeraçãoMatriz(matriz);
-
 do
 {
     //Impressão da Matriz
